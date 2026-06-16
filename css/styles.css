@@ -1,0 +1,626 @@
+/* ==========================================================================
+   1. CONFIGURAÇÕES GERAIS E RESETS
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding-left: 260px; /* Abre espaço exato para a barra lateral fixa */
+  background-color: #0f172a; /* Azul escuro profundo (fundo do site) */
+  color: #f8fafc; /* Texto claro (branco gelo) */
+}
+
+/* ==========================================================================
+   2. BARRA LATERAL (NAVBAR) E ACESSIBILIDADE
+   ========================================================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  background-color: #1e293b; /* Azul ardósia fechado */
+  border-right: 1px solid #334155; /* Linha divisória vertical sutil */
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  z-index: 10;
+}
+
+.navbar a {
+  color: #94a3b8; /* Azul acinzentado para links normais */
+  text-decoration: none;
+  padding: 15px 25px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.4); /* Divisores entre links */
+}
+
+/* Efeito ao passar o mouse nos links do menu */
+.navbar a:hover {
+  color: #38bdf8; /* Azul ciano brilhante */
+  background-color: rgba(56, 189, 248, 0.06); /* Leve brilho de fundo */
+  padding-left: 32px; /* Pequeno empurrãozinho elegante para a direita */
+}
+
+/* Área de Controles de Acessibilidade no rodapé do menu */
+.controles-acessibilidade {
+  margin-top: auto; /* Empurra os controles para o final da barra lateral */
+  padding: 20px;
+  border-top: 1px solid #334155;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.controles-acessibilidade button {
+  background-color: #334155;
+  color: #f8fafc;
+  border: 1px solid #475569;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.controles-acessibilidade button:hover {
+  background-color: #475569;
+  color: #38bdf8;
+}
+
+.botoes-fonte {
+  display: flex;
+  gap: 10px;
+}
+
+.botoes-fonte button {
+  flex: 1; /* Faz os botões A+ e A- dividirem o espaço igualmente */
+}
+
+/* --- FOTO DE PERFIL NO MENU LATERAL --- */
+.perfil-menu {
+  text-align: center;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.4); /* Linha divisória igual a dos links */
+}
+
+.foto-perfil-menu {
+  width: 110px; /* Tamanho da foto */
+  height: 110px;
+  border-radius: 50%; /* Corta a foto em um círculo perfeito */
+  object-fit: cover; /* Impede que a foto amasse ou achate */
+  border: 3px solid #38bdf8; /* Borda azul ciano estilosa */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombrinha para dar profundidade */
+  margin-bottom: 10px;
+}
+
+.perfil-menu h3 {
+  color: #f8fafc; /* Branco gelo */
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   3. CABEÇALHO (HEADER) E RODAPÉ (FOOTER) GERAIS
+   ========================================================================== */
+header {
+  max-width: 1200px;
+  margin: 40px auto 10px auto;
+  padding: 0 40px;
+}
+
+header h1 {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 32px;
+}
+
+header p {
+  margin: 8px 0 0 0;
+  color: #94a3b8;
+  font-size: 16px;
+}
+
+footer {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px 40px;
+  border-top: 1px solid #334155;
+  text-align: center;
+}
+
+footer p {
+  color: #64748b;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* ==========================================================================
+   4. ESTRUTURA DE LAYOUT (CONTAINER PRINCIPAL)
+   ========================================================================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* ==========================================================================
+   5. CARTÕES DO FEED (INDEX.HTML)
+   ========================================================================== */
+.introducao-blog, .post-card {
+  background-color: #1e293b; /* Azul ardósia */
+  border: 1px solid #334155;
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 35px;
+  position: relative; 
+}
+
+.introducao-blog {
+  width: 100%; /* A introdução ocupa a largura inteira */
+}
+
+.post-card {
+  width: 48%; /* Exibe os posts em duas colunas */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito flutuante moderno ao passar o mouse no post */
+.post-card:hover {
+  transform: translateY(-6px); /* Faz o card subir levemente */
+  border-color: #38bdf8; /* Acende a borda em azul ciano */
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(56, 189, 248, 0.04);
+}
+
+.introducao-blog h2, .post-card h3 {
+  color: #38bdf8; /* Títulos em destaque azul ciano */
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 22px;
+}
+
+.introducao-blog p, .post-card p {
+  color: #cbd5e1; /* Texto azul acinzentado confortável para ler */
+  line-height: 1.6;
+}
+
+.data-post {
+  color: #64748b;
+  font-size: 13px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.imagem-post {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Link invisível truque (Torna o card todo clicável) */
+.link-card-inteiro {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 15px;
+}
+
+.link-card-inteiro::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   6. CARTÕES DAS OUTRAS PÁGINAS (ABOUT, CURRICULUM, CONTACT, ETC.)
+   ========================================================================== */
+.page-card {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  width: 100%; /* Ocupa a largura total do container central nessas páginas */
+  padding: 40px;
+  margin-bottom: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.page-card h2 {
+  color: #38bdf8;
+  margin-top: 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 10px;
+}
+
+.page-card p {
+  color: #cbd5e1;
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+/* ==========================================================================
+   7. COMPONENTES ESPECÍFICOS REQUISITADOS
+   ========================================================================== */
+
+/* --- FOTO DE PERFIL REDONDA (ABOUT.HTML) --- */
+.foto-perfil-redonda {
+  width: 250px; 
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover; /* Recorta fotos retangulares sem achatar */
+  display: block;
+  margin: 0 auto 25px auto;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  border: 4px solid #334155;
+}
+
+/* --- FORMULÁRIO DE CONTATO MODERNO (CONTACT.HTML) --- */
+#form-contato input, #form-contato textarea {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  color: #f8fafc;
+  padding: 12px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+
+#form-contato input:focus, #form-contato textarea:focus {
+  outline: none;
+  border-color: #38bdf8; /* Borda acende em azul ciano ao clicar */
+}
+
+/* --- TABELA DE FORMAÇÃO (CURRICULUM.HTML) --- */
+table th {
+  background-color: #334155 !important;
+  color: #38bdf8 !important;
+  font-weight: 600;
+}
+
+table tr {
+  border-bottom: 1px solid rgba(51, 65, 85, 0.5) !important;
+}
+
+table td {
+  color: #cbd5e1;
+}
+
+/* --- GALERIA DE FOTOS (POST-CAES.HTML) --- */
+.galeria-caes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.galeria-caes img {
+  width: calc(50% - 8px); /* Duas fotos por linha com espaçamento correto */
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+/* ==========================================================================
+   8. ADAPTAÇÃO PARA CELULAR (RESPONSIVIDADE)
+   ========================================================================== */
+@media screen and (max-width: 900px) {
+  body {
+    padding-left: 0; /* Remove o espaço lateral do menu no celular */
+  }
+
+  .navbar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #334155;
+  }
+  
+  .controles-acessibilidade {
+    margin-top: 10px;
+  }
+
+  .post-card {
+    width: 100%; /* No celular, os posts viram uma coluna única */
+  }
+  
+  .galeria-caes img {
+    width: 100%; /* Fotos dos cachorros empilhadas no celular */
+  }
+}
+/* --- CORREÇÃO: FORÇA O TÍTULO A OCUPAR A LINHA INTEIRA NO FLEXBOX --- */
+.container > h1, 
+.container > h2, 
+.container > h3,
+.titulo-feed, 
+.introducao-blog {
+  flex-basis: 100%; /* Ordem máxima do Flexbox para ocupar toda a largura */
+  width: 100%;
+  margin-bottom: 25px; /* Garante um espaço legal antes dos posts começarem */
+}
+/* ==========================================================================
+   GALERIA DE FOTOS ALINHADA (CSS GRID)
+   ========================================================================== */
+
+/* 1. Configura a 'super-caixa' para ser uma grade */
+.galeria-grid {
+  display: grid;
+  
+  /* Cria 3 colunas de tamanhos iguais */
+  grid-template-columns: repeat(3, 1fr); 
+  
+  /* Define um espaço de 15px entre as fotos */
+  gap: 15px; 
+  
+  margin-top: 25px;
+}
+
+/* 2. Regra para TODAS as imagens dentro dessa galeria */
+.galeria-grid img {
+  width: 100%; /* Faz a imagem ocupar toda a largura da coluna dela */
+  height: 250px; /* Força TODAS as imagens a terem a mesma altura */
+  
+  /* O PULO DO GATO: Corta a imagem para ela preencher a caixa sem achatar */
+  object-fit: cover; 
+  
+  border-radius: 8px; /* Cantos arredondados para combinar com o blog */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  
+  /* Dá uma animação suave se você passar o mouse */
+  transition: transform 0.2s ease; 
+}
+
+/* Efeito opcional: a foto cresce um pouquinho ao passar o mouse */
+.galeria-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* 3. Ajuste para Celular (Responsividade) */
+@media screen and (max-width: 768px) {
+  .galeria-grid {
+    /* No celular, muda de 3 para apenas 2 colunas */
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .galeria-grid {
+    /* Em telas muito pequenas, as fotos ficam uma embaixo da outra */
+    grid-template-columns: 1fr; 
+  }
+}
+
+/* ==========================================================================
+   IMAGENS DE CAPA DOS POSTS (FEED - INDEX.HTML)
+   ========================================================================== */
+
+.imagem-capa-post {
+  width: 100%; /* Ocupa toda a largura do cartão */
+  
+  /* Defina uma altura fixa que fique boa no seu layout. 
+     Geralmente entre 180px e 220px fica elegante. */
+  height: 200px; 
+  
+  /* O PULO DO GATO: Recorta a imagem para preencher sem achatar */
+  object-fit: cover; 
+  
+  /* Arredondamento e sombra combinando com o design azul moderno */
+  border-radius: 8px; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  
+  /* Garante um espaço legal antes do texto começar */
+  margin-bottom: 15px; 
+  
+  /* Garante que o alinhamento não falhe */
+  display: block; 
+}
+
+/* PLANO B: Força o encaixe de QUALQUER imagem dentro dos posts do index */
+.post-card img {
+  width: 100% !important;
+  height: 200px !important;
+  object-fit: cover !important;
+  border-radius: 8px !important;
+  display: block !important;
+  margin-bottom: 15px !important;
+}
+
+/* ==========================================================================
+   BOTÃO E ANIMAÇÃO DE ABRIR/FECHAR MENU
+   ========================================================================== */
+
+/* Estilo do botão flutuante */
+.btn-menu-toggle {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 9999; /* Fica por cima de tudo na tela */
+  background-color: #38bdf8; /* Azul ciano */
+  color: #0f172a; /* Azul escuro do fundo */
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-menu-toggle:hover {
+  background-color: #0284c7;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Prepara a barra e o corpo para a animação de deslizamento */
+.navbar, body {
+  transition: transform 0.4s ease, padding-left 0.4s ease;
+}
+
+/* Espaço extra no topo do menu para a sua foto não ficar escondida atrás do botão */
+.navbar {
+  padding-top: 60px; 
+}
+
+/* --- AS CLASSES MÁGICAS --- */
+/* Quando o menu ganhar esta classe, ele desliza 100% para a esquerda (some da tela) */
+.navbar.fechada {
+  transform: translateX(-100%);
+}
+
+/* Quando o corpo ganhar esta classe, ele remove a margem, esticando os posts */
+body.menu-fechado {
+  padding-left: 0;
+}
+
+/* ==========================================================================
+   MODO NOTURNO (DARK MODE) - VERSÃO CORRIGIDA E SUAVE
+   ========================================================================== */
+
+/* 1. Fundo geral e cor base da fonte */
+body.dark-mode {
+  background-color: #121212 !important;
+  color: #e0e0e0 !important;
+}
+
+/* 2. Cartões e Menu (Fundo levemente mais claro que o fundo geral para dar destaque) */
+body.dark-mode .page-card,
+body.dark-mode .post-card,
+body.dark-mode .navbar {
+  background-color: #1e1e1e !important;
+  border: 1px solid #333 !important;
+  box-shadow: none !important;
+}
+
+/* 3. Textos e Títulos (Garante leitura sem destruir formatações essenciais) */
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3,
+body.dark-mode span,
+body.dark-mode label,
+body.dark-mode p {
+  color: #e0e0e0 !important;
+}
+
+/* 4. Links */
+body.dark-mode a {
+  color: #60a5fa !important; /* Azul suave */
+}
+
+/* 5. Tabela do Currículo e Formulário */
+body.dark-mode input,
+body.dark-mode textarea {
+  background-color: #2d2d2d !important;
+  color: #ffffff !important;
+  border: 1px solid #444 !important;
+}
+
+body.dark-mode table th {
+  background-color: #333 !important;
+  border-bottom: 1px solid #555 !important;
+}
+/* Ajuste para o botão do ícone */
+#btn-dark-mode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%; /* Deixa o botão redondo */
+  font-size: 24px; /* Tamanho do ícone */
+}
+/* ==========================================================================
+   MODO NOTURNO - FUNDOS E CAIXAS CORRIGIDOS
+   ========================================================================== */
+
+/* 1. FUNDO GERAL DA PÁGINA (Escuro profundo) */
+body.dark-mode {
+  background-color: #121212 !important;
+}
+
+/* 2. O CONTAINER GERAL (Deve ser transparente para mostrar o fundo da página entre os posts) */
+body.dark-mode .container {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* 3. AS CAIXAS (A sua introdução e os cartões de postagem) */
+body.dark-mode .introducao-blog,
+body.dark-mode .post-card {
+  background-color: #1e1e1e !important; /* Cinza elegante, destaca do fundo */
+  border: 1px solid #333333 !important; /* Borda bem subtil */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5) !important; /* Sombra preta suave */
+}
+
+/* 4. OS TEXTOS DENTRO DAS CAIXAS (Garante leitura perfeita) */
+body.dark-mode .introducao-blog h2,
+body.dark-mode .introducao-blog p,
+body.dark-mode .introducao-blog b,
+body.dark-mode .titulo-feed,
+body.dark-mode .post-card h3,
+body.dark-mode .post-card span,
+body.dark-mode .post-card p {
+  color: #e0e0e0 !important;
+}
+
+/* 5. OS LINKS DOS CARTÕES */
+body.dark-mode .post-card a {
+  color: #60a5fa !important; /* Azul claro para o "Ler post completo ->" */
+}
+/* ==========================================================================
+   ALINHAMENTO BLINDADO DOS BOTÕES (NA MESMA LINHA)
+   ========================================================================== */
+
+.controles-acessibilidade {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  
+  /* A MAGIA ACONTECE AQUI: */
+  margin-top: auto !important; /* Empurra a caixa para o mais para baixo possível */
+  padding-bottom: 20px !important; /* Dá um espaço de respiro no fim da barra */
+  width: 100%;
+}
+
+.botoes-fonte {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 5px !important;
+}
+
+/* Tamanho e formato perfeito para o botão do Modo Noturno */
+#btn-dark-mode {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 36px !important; /* Largura fixa */
+  height: 36px !important; /* Altura fixa igual à largura (quadrado perfeito) */
+  padding: 0 !important;
+  border-radius: 5px !important; /* Deixei com cantos arredondados como os de texto */
+  font-size: 20px !important; /* Tamanho do ícone um pouco menor para equilibrar */
+  cursor: pointer;
+}
