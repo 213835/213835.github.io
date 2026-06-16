@@ -13,4 +13,4 @@ Modo Noturno (Dark Mode): Alternância inteligente de cores nos cartões e fundo
 Controlo de Acessibilidade: Sistema em JavaScript que permite aumentar ou diminuir a fonte do site, fixado na parte inferior do menu lateral.
 Formulário Validado: Tela de contacto com validação robusta em JavaScript para garantir o preenchimento correto dos dados.
 
-
+https://github.com/213835/213835.github.io.git
